@@ -1,36 +1,65 @@
-import { useQuery } from '@apollo/client';
+import React, { useEffect, useState } from 'react';
 
-import ThoughtList from '../components/ThoughtList';
-import ThoughtForm from '../components/ThoughtForm';
+const YourComponent = () => {
+  const [data, setData] = useState([]);
+  const [randomItem, setRandomItem] = useState(null);
+  const [imageError, setImageError] = useState(false);
 
-import { QUERY_THOUGHTS } from '../utils/queries';
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://perenual.com/api/species-list?key=sk-Sl3I656922f82a1e13232');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const result = await response.json();
+        setData(result.data);
 
-const Home = () => {
-  const { loading, data } = useQuery(QUERY_THOUGHTS);
-  const thoughts = data?.thoughts || [];
+        const randomIndex = Math.floor(Math.random() * result.data.length);
+        setRandomItem(result.data[randomIndex]);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const handleImageError = (event) => {
+    console.error('Error loading image:', event);
+    setImageError(true);
+  };
 
   return (
-    <main>
-      <div className="flex-row justify-center">
-        <div
-          className="col-12 col-md-10 mb-3 p-3"
-          style={{ border: '1px dotted #1a1a1a' }}
-        >
-          <ThoughtForm />
-        </div>
-        <div className="col-12 col-md-8 mb-3">
-          {loading ? (
-            <div>Loading...</div>
+    <section class="px-6 py-12 text-center md:px-12 lg:text-left ">
+    <div>
+      {randomItem && (
+        <div key={randomItem.id}>
+          <h3>{randomItem.common_name}</h3>
+          
+          {imageError ? (
+            <p>Error loading image</p>
           ) : (
-            <ThoughtList
-              thoughts={thoughts}
-              title="Some Feed for Thought(s)..."
+            <div>
+            <img
+              src={randomItem.default_image.small_url}
+              alt={randomItem.common_name}
+              style={{ maxWidth: '100%' }}
+              onError={handleImageError}
             />
+            </div>
           )}
+          <div>
+          <p>Other name: {randomItem.other_name}</p>
+          <p>Cycle: {randomItem.cycle}</p>
+          <p>Watering: {randomItem.watering}</p>
+          <p>Sunlight: {randomItem.sunlight}</p>
+          </div>
         </div>
-      </div>
-    </main>
+      )}
+    </div>
+    </section>
   );
 };
 
-export default Home;
+export default YourComponent;
