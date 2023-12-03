@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from './App.jsx';
 import Home from './pages/Home';
+import Blog from './pages/Blog';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import SingleThought from './pages/SingleThought';
@@ -33,6 +34,9 @@ const router = createBrowserRouter([
       }, {
         path: '/thoughts/:thoughtId',
         element: <SingleThought />
+      }, {
+        path: '/blog',
+        element: <Blog />
       }
     ]
   },
