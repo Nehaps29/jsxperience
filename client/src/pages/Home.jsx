@@ -1,54 +1,94 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../utils/mutations';
 
-const YourComponent = () => {
-  const [data, setData] = useState([]);
-  const [randomItem, setRandomItem] = useState(null);
-  const [imageError, setImageError] = useState(false);
+import Auth from '../utils/auth';
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('https://perenual.com/api/species-list?key=sk-Sl3I656922f82a1e13232');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const result = await response.json();
-        setData(result.data);
+const Login = (props) => {
+  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [login, { error, data }] = useMutation(LOGIN_USER);
 
-        const randomIndex = Math.floor(Math.random() * result.data.length);
-        setRandomItem(result.data[randomIndex]);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
+  // update state based on form input changes
+  const handleChange = (event) => {
+    const { name, value } = event.target;
 
-    fetchData();
-  }, []);
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
 
-  const handleImageError = (event) => {
-    console.error('Error loading image:', event);
-    setImageError(true);
+  // submit form
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formState);
+    try {
+      const { data } = await login({
+        variables: { ...formState },
+      });
+
+      Auth.login(data.login.token);
+    } catch (e) {
+      console.error(e);
+    }
+
+    // clear form values
+    setFormState({
+      email: '',
+      password: '',
+    });
   };
 
   return (
-    <section className="px-6 py-12 text-center md:px-12 lg:text-left ">
-    <div>
-      {randomItem && (
-        <div key={randomItem.id}>
-          <h3>{randomItem.common_name}</h3>
-          
-          
-          <div>
-          <p>Other name: {randomItem.other_name}</p>
-          <p>Cycle: {randomItem.cycle}</p>
-          <p>Watering: {randomItem.watering}</p>
-          <p>Sunlight: {randomItem.sunlight}</p>
+    <main className="flex-row justify-center mb-4">
+      <div className="col-12 col-lg-10">
+        <div className="card">
+          <h4 className="bg-primary card-header bg-dark text-white p-2">Login</h4>
+          <div className="card-body">
+            {data ? (
+              <p>
+                Success! You may now head{' '}
+                <Link to="/">back to the homepage.</Link>
+              </p>
+            ) : (
+              <form onSubmit={handleFormSubmit}>
+                <input
+                  className="form-input"
+                  placeholder="Your email"
+                  name="email"
+                  type="email"
+                  value={formState.email}
+                  onChange={handleChange}
+                />
+                <input
+                  className="form-input"
+                  placeholder="******"
+                  name="password"
+                  type="password"
+                  value={formState.password}
+                  onChange={handleChange}
+                />
+                <button
+                  className="btn btn-block btn-primary"
+                  style={{ cursor: 'pointer' }}
+                  type="submit"
+                >
+                  Submit
+                </button>
+              </form>
+            )}
+
+            {error && (
+              <div className="my-3 p-3 bg-danger text-white">
+                {error.message}
+              </div>
+            )}
           </div>
         </div>
-      )}
-    </div>
-    </section>
+      </div>
+    </main>
   );
 };
 
-export default YourComponent;
+export default Login;
