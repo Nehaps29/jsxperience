@@ -31,24 +31,13 @@ const YourComponent = () => {
   };
 
   return (
-    <section class="px-6 py-12 text-center md:px-12 lg:text-left ">
+    <section className="px-6 py-12 text-center md:px-12 lg:text-left ">
     <div>
       {randomItem && (
         <div key={randomItem.id}>
           <h3>{randomItem.common_name}</h3>
           
-          {imageError ? (
-            <p>Error loading image</p>
-          ) : (
-            <div>
-            <img
-              src={randomItem.default_image.small_url}
-              alt={randomItem.common_name}
-              style={{ maxWidth: '100%' }}
-              onError={handleImageError}
-            />
-            </div>
-          )}
+          
           <div>
           <p>Other name: {randomItem.other_name}</p>
           <p>Cycle: {randomItem.cycle}</p>
