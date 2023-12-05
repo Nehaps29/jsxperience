@@ -920,7 +920,7 @@ a:hover {
 
 /* BACKGROUND UTILS */
 .bg-primary {
-  background-image: url("./public/images/headerplant.jpeg");
+  background-image: url("../src/assets/images/headerplant.jpeg");
 }
 
 .bg-info {
