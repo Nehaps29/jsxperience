@@ -1,4 +1,6 @@
 const User = require('./User');
-const Thought = require('./Thought');
+const Post = require('./Post');
+const Category = require('./Category');
+const Plant = require('./Plant')
 
-module.exports = { User, Thought };
+module.exports = { User, Post, Category, Plant };
