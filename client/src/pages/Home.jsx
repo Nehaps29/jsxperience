@@ -1,94 +1,72 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../utils/mutations';
+import React, { useState } from 'react';
+import { Box, Flex, Input, Image, Text, Button, InputGroup, InputLeftAddon } from '@chakra-ui/react';
+import { SearchIcon } from '@chakra-ui/icons';
 
-import Auth from '../utils/auth';
+const Home = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [imageDetails, setImageDetails] = useState({
+    url: 'https://via.placeholder.com/300',
+    title: 'Name',
+    description: 'Description',
+  });
 
-const Login = (props) => {
-  const [formState, setFormState] = useState({ email: '', password: '' });
-  const [login, { error, data }] = useMutation(LOGIN_USER);
-
-  // update state based on form input changes
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
-  };
-
-  // submit form
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    console.log(formState);
-    try {
-      const { data } = await login({
-        variables: { ...formState },
-      });
-
-      Auth.login(data.login.token);
-    } catch (e) {
-      console.error(e);
-    }
-
-    // clear form values
-    setFormState({
-      email: '',
-      password: '',
+  const handleSearch = () => {
+    
+    
+    setImageDetails({
+      url: 'https://via.placeholder.com/300',
+      title: 'Name',
+      description: 'Description.',
     });
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="bg-primary card-header bg-dark text-white p-2">Login</h4>
-          <div className="card-body">
-            {data ? (
-              <p>
-                Success! You may now head{' '}
-                <Link to="/">back to the homepage.</Link>
-              </p>
-            ) : (
-              <form onSubmit={handleFormSubmit}>
-                <input
-                  className="form-input"
-                  placeholder="Your email"
-                  name="email"
-                  type="email"
-                  value={formState.email}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="******"
-                  name="password"
-                  type="password"
-                  value={formState.password}
-                  onChange={handleChange}
-                />
-                <button
-                  className="btn btn-block btn-primary"
-                  style={{ cursor: 'pointer' }}
-                  type="submit"
-                >
-                  Submit
-                </button>
-              </form>
-            )}
+    <Box p={4}>
+      <InputGroup mb={4}>
+        <InputLeftAddon>
+          <Button
+            aria-label="Search"
+            leftIcon={<SearchIcon />}
+            onClick={handleSearch}
+            marginRight="3"  
+          >
+            Search
+          </Button>
+        </InputLeftAddon>
+        <Input
+          placeholder=""
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+        />
+      </InputGroup>
 
-            {error && (
-              <div className="my-3 p-3 bg-danger text-white">
-                {error.message}
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    </main>
+      <Flex alignItems="center" justifyContent="center" mb={4}>
+        <Image
+          src={imageDetails.url}
+          alt={imageDetails.title}
+          boxSize="300px"
+          border="2px solid green"  
+          borderRadius="md" 
+        />
+        <Box ml={4}>
+          <Text fontSize="lg" fontWeight="bold">
+            {imageDetails.title}
+          </Text>
+          <Text>{imageDetails.description}</Text>
+        </Box>
+      </Flex>
+    </Box>
   );
 };
 
-export default Login;
+export default Home;
+
+
+
+
+
+
+
+
+
