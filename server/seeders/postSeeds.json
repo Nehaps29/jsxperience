@@ -1,0 +1,28 @@
+[
+  {
+    "postTitle": "Post1",
+    "postBody": "body1",
+    "postAuthor":"Lina"
+  },
+  {
+    "postTitle": "Post2",
+    "postBody": "body2",
+    "postAuthor":"Crystal"
+  },
+  {
+    "postTitle": "Post3",
+    "postBody": "body3",
+    "postAuthor":"Eric"
+  },
+  {
+    "postTitle": "Post4",
+    "postBody": "body4",
+    "postAuthor":"Crystal"
+  },
+  {
+    "postTitle": "Post5",
+    "postBody": "body5",
+    "postAuthor":"Lina"
+  }
+  
+]

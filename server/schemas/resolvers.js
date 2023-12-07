@@ -39,9 +39,27 @@ const resolvers = {
 
       return { token, user };
     },
-   
+
+    removePost: async (parent, { postId }, context) => {
+      if (context.user) {
+        const post = await Post.findOneAndDelete({
+          _id: postId,
+           postAuthor: context.user.username,
+        });
   
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { posts: post._id } }
+        );
+  
+        return post;
+      }
+      throw AuthenticationError;
+    },
+     
   },
+  
+ 
 };
 
 module.exports = resolvers;

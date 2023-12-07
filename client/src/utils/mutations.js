@@ -25,4 +25,15 @@ export const ADD_USER = gql`
 `;
 
 
+export const REMOVE_POST = gql`
+  mutation removePost($postId: ID!) {
+    removePost(postId: $postId) {
+      _id
+      postTitle
+      postBody
+    }
+  }
+`;
+
+
 
