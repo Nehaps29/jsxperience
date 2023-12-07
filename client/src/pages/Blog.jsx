@@ -1,47 +1,36 @@
-import { Grid, GridItem, Box } from '@chakra-ui/react';
+import { useQuery } from '@apollo/client';
+import PostList from '../components/PostList';
+import PostForm from '../components/PostForm';
+import { QUERY_POST } from '../utils/queries';
 
-export default function CategoryCards() {
+const Blog = () => {
+  const { loading, data } = useQuery(QUERY_POST);
+  const post = data?.post || [];
+
   return (
-    <Grid
-      h='350px'
-      templateRows='repeat(2, 1fr)'
-      templateColumns='repeat(5, 1fr)'
-      gap={4}
-    >
-      <GridItem rowSpan={2} colSpan={1}>
-        <Box
-          h='100%'
-          w='100%'
-          bg='#d9e9e8'
-          border='5px solid green'
-        />
-      </GridItem>
-      <GridItem colSpan={2}>
-        <Box
-          h='100%'
-          w='100%'
-          bg='#d9e9e8'
-          border='5px solid green'
-        />
-      </GridItem>
-      <GridItem colSpan={2}>
-        <Box
-          h='100%'
-          w='100%'
-          bg='#d9e9e8'
-          border='5px solid green'
-        />
-      </GridItem>
-      <GridItem colSpan={4}>
-        <Box
-          h='100%'
-          w='100%'
-          bg='#d9e9e8'
-          border='5px solid green'
-        />
-      </GridItem>
-    </Grid>
+    <main>
+      <div className="flex-row justify-center">
+        <div
+          className="col-12 col-md-10 mb-3 p-3"
+          style={{ border: '1px dotted #1a1a1a' }}
+        >
+          <PostForm />
+        </div>
+        <div className="col-12 col-md-8 mb-3">
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            <PostList
+              post={post}
+              title="Some Feed for Post(s)..."
+            />
+          )}
+        </div>
+      </div>
+    </main>
   );
-}
+};
+
+export default Blog;
 
 
