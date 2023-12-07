@@ -24,6 +24,15 @@ export const ADD_USER = gql`
   }
 `;
 
+export const ADD_POST = gql`
+ mutation AddPost($postId: ID!, $postTitle: String!, $postBody: String!) {
+   addPost(postId: $postId, postTitle: $postTitle, postBody: $postBody) {
+     _id
+     postTitle
+     postBody
+   }
+ }
+`;
 
 export const REMOVE_POST = gql`
   mutation removePost($postId: ID!) {

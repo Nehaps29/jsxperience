@@ -40,6 +40,19 @@ const resolvers = {
       return { token, user };
     },
 
+    addPost: async (parent, { postId, postTitle, postBody }, context) => {
+      if (context.user) {
+        const post = await Post.create({
+          _id: postId,
+          postTitle,
+          postBody,
+          user: context.user._id,
+        });
+        return post;
+      }
+      throw AuthenticationError;
+    },
+
     removePost: async (parent, { postId }, context) => {
       if (context.user) {
         const post = await Post.findOneAndDelete({
