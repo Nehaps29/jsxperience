@@ -25,6 +25,7 @@ const typeDefs = `
     postBody: String! 
     comments: [Comment]
     category: Category
+    postAuthor: String
   }
 
   type Auth {
