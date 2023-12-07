@@ -42,7 +42,21 @@ export const REMOVE_POST = gql`
       postBody
     }
   }
-`;
+`
+export const UPDATE_POST = gql`
+mutation updatePost($postId: ID!, $postTitle: String!, $postBody: String!) {
+  updatePost(postId: $postId, postTitle: $postTitle, postBody: $postBody) {
+    postTitle
+    postBody
+    postAuthor
+    createdAt
+    category{
+      _id
+      name
+    }
+  }
+}`
+;
 
 
 

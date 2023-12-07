@@ -69,6 +69,21 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
+    updatePost: async (parent, { postId, postTitle, postBody }, context) => {
+      console.log(`postId: ${postId}`)
+      console.log(`postTitle: ${postTitle}`)
+      console.log(`postBody: ${postBody}`)
+      const post = await Post.findByIdAndUpdate(postId, { 
+        
+        postTitle: postTitle,
+        postBody: postBody,
+      }, {new: true});
+  
+      if (!post) {
+        throw new Error
+      }
+      return post;
+    }
      
   },
   
