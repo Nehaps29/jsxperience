@@ -4,8 +4,8 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 const resolvers = {
   Query: {
     
-    posts: async (parent, { username }) => {
-      return Post.findOne({ username });
+    posts: async () => {
+      return await Post.find({});
     },
    
     me: async (parent, args, context) => {
