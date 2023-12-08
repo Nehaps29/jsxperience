@@ -24,7 +24,10 @@ const PostForm = () => {
  const handleFormSubmit = async (event) => {
   event.preventDefault();
 
+  console.log("click")
+
   try {
+    
     const { data } = await addPost({
       variables: {
         postTitle,
@@ -32,6 +35,8 @@ const PostForm = () => {
         postAuthor: Auth.getProfile().data.username,
       },
     });
+
+    console.log(data)
 
     setPostBody('');
     setPostTitle('');
@@ -53,7 +58,7 @@ const PostForm = () => {
 
  return (
   <div>
-    <h3>Empowering the community through knowledge sharing</h3>
+    {/* <h3>Empowering the community through knowledge sharing</h3> */}
 
     {Auth.loggedIn() ? (
       <>

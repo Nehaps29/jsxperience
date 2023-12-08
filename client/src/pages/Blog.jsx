@@ -1,33 +1,38 @@
+import React from 'react';
 import { useQuery } from '@apollo/client';
-import PostList from '../components/PostList';
-import PostForm from '../components/PostForm';
 import { QUERY_POST } from '../utils/queries';
 
 const Blog = () => {
-  const { loading, data } = useQuery(QUERY_POST);
-  const post = data?.post || [];
+  
+  const { loading, error, data } = useQuery(QUERY_POST);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+  
+  const posts = data.posts || [];
+  console.log(data);
 
   return (
-    <main>
-      <div className="flex-row justify-center">
-        <div
-          className="col-12 col-md-10 mb-3 p-3"
-          style={{ border: '1px dotted #1a1a1a' }}
+    <div>
+      <h1 className="flex-row justify-center">Posts</h1>
+      <h3 className="flex-row justify-center">Empowering the community through knowledge sharing!</h3>
+      <div
+          className="flex-row justify-center"
+          style={{ border: '1px #1A1A1A' }}
         >
-          <PostForm />
-        </div>
-        <div className="col-12 col-md-8 mb-3">
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            <PostList
-              post={post}
-              title="Some Feed for Post(s)..."
-            />
-          )}
-        </div>
+       
       </div>
-    </main>
+      <br />
+      <div>
+      {posts.map((post) => (
+        <div key={post._id} className="card mb-3">
+          <h3 className="card-header bg-primary text-light p-2 m-0">{post.postTitle}</h3>
+          <p className="text-black"> {post.postBody}</p>
+          <p className="card-body bg-light p-2">Author: {post.postAuthor}</p>
+          <hr />
+        </div>
+      ))}
+      </div>
+    </div>
   );
 };
 
