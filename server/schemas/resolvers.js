@@ -5,7 +5,7 @@ const resolvers = {
   Query: {
     
     posts: async (parent, { username }) => {
-      return Post.findOne({ username }).populate('posts');
+      return Post.findOne({ username });
     },
    
     me: async (parent, args, context) => {
@@ -41,13 +41,19 @@ const resolvers = {
     },
 
     addPost: async (parent, { postTitle, postBody, postAuthor}, context) => {
-       {
+       
+      if (context.user){
         const post = await Post.create({
           postTitle,
           postBody,
-          postAuthor
-          //user: context.user._id,
+          postAuthor: context.user.username,
         });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { posts: post._id } }
+        );
+
         return post;
       }
       throw AuthenticationError;
