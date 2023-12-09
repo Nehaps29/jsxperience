@@ -27,7 +27,7 @@ export const ADD_USER = gql`
 export const ADD_POST = gql`
  mutation AddPost($postTitle: String!, $postBody: String!) {
    addPost(postTitle: $postTitle, postBody: $postBody) {
-    _id 
+    _id
     postTitle
     postBody
     postAuthor
@@ -35,9 +35,25 @@ export const ADD_POST = gql`
  }
 `;
 
+export const DELETE_POST = gql`
+  mutation removePost($postId: ID!) {
+    removePost(postId: $postId) {
+      _id
+      }
+  }
+`
 export const REMOVE_POST = gql`
   mutation removePost($postId: ID!) {
     removePost(postId: $postId) {
+      _id
+      postTitle
+      postBody
+    }
+  }
+`
+export const UPDATE_POST1 = gql`
+  mutation UpdatePost($postId: ID!, $postTitle: String!, $postBody: String!) {
+    updatePost(postId: $postId, postTitle: $postTitle, postBody: $postBody) {
       _id
       postTitle
       postBody
@@ -58,6 +74,3 @@ mutation updatePost($postId: ID!, $postTitle: String!, $postBody: String!) {
   }
 }`
 ;
-
-
-
