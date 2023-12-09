@@ -1084,6 +1084,58 @@ a:hover {
   background-color: #31a9e1;
 }
 
+.delete-button {
+  background-color: #DC3545; 
+  color: #fff; 
+  padding: 8px 16px; 
+  border: none;
+  border-radius: 4px; 
+  cursor: pointer;
+  margin-right: 8px; 
+}
+.delete-button:hover {
+  background-color: #BD2130; 
+}
+.delete-button:active {
+  background-color: #C82333; 
+}
+.edit-button {
+  background-color: grey; 
+  color: #fff; 
+  padding: 8px 16px; 
+  border: none;
+  border-radius: 4px; 
+  cursor: pointer;
+  margin-right: 8px; 
+}
+.edit-button:hover {
+  background-color: darkgrey;
+}
+.edit-button:active {
+  background-color: lightgrey; 
+}
+.update-button {
+  background-color: blue;
+  color: #fff; 
+  padding: 8px 16px; 
+  border: none;
+  border-radius: 4px; 
+  cursor: pointer;
+  margin-right: 8px; 
+}
+.update-button:hover {
+  background-color: darkblue;
+}
+.update-button:active {
+  background-color: lightblue; 
+}
+.cancel-button {
+  background-color: black; 
+  color: #fff; /* Set text
+.cancel-button:active {
+  background-color: black; /* Change color on button press */
+}
+
 .card {
   border: 1px solid #1a1a1a;
   margin-bottom: 1rem;
