@@ -1083,6 +1083,14 @@ a:hover {
 .btn.btn-link:hover {
   background-color: #31a9e1;
 }
+.commentbutton{
+  font-weight: bold;
+  background-color: #108632;
+}
+
+.commentbutton:hover{
+  background-color: #FDE74C;
+}
 
 .delete-button {
   background-color: #108632; 
@@ -1153,7 +1161,10 @@ a:hover {
 .card .card-body {
   padding: 0.375rem;
 }
-
+.blogpostcard {
+  border: 3px #108632;
+  margin-bottom: 20px;
+}
 .card .card-footer {
   border-top: 1px solid #1a1a1a;
   padding: 0.375rem;
