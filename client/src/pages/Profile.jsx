@@ -115,8 +115,7 @@ const Profile = (quotedata) => {
           {posts.map((post) => (
             
             <div key={post._id}>
-              <Box border='1px' borderColor='gray.200'>
-              <Card>
+              <Card boxShadow='dark-lg' p='6' rounded='md' bg='white'>
               {isEditing && editPost.id === post._id ? (
                 <div>
                   <Card>
@@ -159,7 +158,7 @@ const Profile = (quotedata) => {
               </button>
 
               </Card>
-              </Box>
+              
             </div>
           ))}
         </div>

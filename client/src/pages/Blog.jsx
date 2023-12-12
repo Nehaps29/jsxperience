@@ -21,7 +21,7 @@ const Blog = () => {
   return (
     <div>
       <h1 className="flex-row justify-center">Posts</h1>
-      <h3 className="flex-row justify-center">Empowering the community through knowledge sharing!</h3>
+      <h3 className="flex-row justify-center">See What Your Fellow Fleurs Are Chatting About</h3>
       <div
           className="flex-row justify-center"
           style={{ border: '1px #1A1A1A' }}
