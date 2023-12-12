@@ -9,14 +9,14 @@ const Home = () => {
   const plants = [
     {
       name: 'Clementine Red',
-      imageSrc: '/src/assets/images/Clementine.png',
+      imageSrc: '../public/images/Clementine.png',
       description: '"A unique series of Columbine, featuring fluffy double flowers that resemble a small Clematis bloom, held upfacing on stems, well above the lacy green foliage mound. This selection produces blooms in shades of rosy red with a yellow center. Flowers are attractive to hummingbirds. Great in containers. Removing spent flowers will increase the blooming time. Great in containers. Since Columbines are relatively short lived, allow some of the plants to go to seed and self sow, however, resulting seedlings may not resemble the mother plant. Leaf miners or sawfly may disfigure the leaves around flowering time. Simply trim off the ugly foliage and the plants will grow fresh leaves. A Fleuroselect Quality Award winner."',
       resource: 'www.perennials.com',
       cycle: 'Perennials',
     },
     {
       name: 'Daylily',
-      imageSrc: '/src/assets/images/Daylily.png',
+      imageSrc: '../',
       description: '"Trophytaker® Daylilies must pass a stringent series of tests, proving themselves to be more beautiful, longer blooming, hardy, vigorous and pest resistant than average varieties. This showy selection bears bright, gold flowers with a red eyezone. Petals are lightly ruffled with a thin edging in red. Blooms mid to late summer. Semi-evergreen. Plants do not usually require dividing for several years, but are easily split apart in fall or early spring. Spent flower stems can be trimmed back after blooms are finished. Cut back dead foliage in mid to late winter. Flowers are edible. May well prove to be hardy in Zone 2 or 3."',
       resource: 'www.perennials.com',
       cycle: 'Perennials',

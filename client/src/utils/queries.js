@@ -21,6 +21,10 @@ export const QUERY_POST = gql`
       postBody
       postAuthor
       postTitle
+      comments {
+        commentText
+        commentAuthor
+      }
     }
   }
 `;
@@ -39,3 +43,21 @@ export const QUERY_USER = gql`
     }
   }
 `;
+
+
+export const QUERY_SINGLE_POST = gql`
+  query getSinglePost($postId: ID!) {
+    post(postId: $postId) {
+      _id
+      postBody
+      postAuthor
+      postTitle
+      comments {
+        commentText
+        commentAuthor
+      }
+    }
+  }
+`;
+
+

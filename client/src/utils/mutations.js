@@ -74,3 +74,17 @@ mutation updatePost($postId: ID!, $postTitle: String!, $postBody: String!) {
   }
 }`
 ;
+
+
+export const ADD_COMMENT = gql`
+mutation Mutation($postId: ID!, $commentText: String!) {
+  addComment(postId: $postId, commentText: $commentText) {
+    postTitle
+    postAuthor
+    comments {
+      commentText
+      commentAuthor
+    }
+  }
+}`
+;
