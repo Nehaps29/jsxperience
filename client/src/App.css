@@ -1085,7 +1085,7 @@ a:hover {
 }
 
 .delete-button {
-  background-color: #DC3545; 
+  background-color: #108632; 
   color: #fff; 
   padding: 8px 16px; 
   border: none;
@@ -1115,7 +1115,7 @@ a:hover {
   background-color: lightgrey; 
 }
 .update-button {
-  background-color: blue;
+  background-color: #FDE74C;
   color: #fff; 
   padding: 8px 16px; 
   border: none;
@@ -1131,9 +1131,12 @@ a:hover {
 }
 .cancel-button {
   background-color: black; 
-  color: #fff; /* Set text
-.cancel-button:active {
-  background-color: black; /* Change color on button press */
+  color: #fff;
+  padding: 8px 16px; 
+  border: none;
+  border-radius: 4px; 
+  cursor: pointer;
+  margin-right: 8px;
 }
 
 .card {
