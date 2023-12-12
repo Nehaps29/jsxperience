@@ -15,10 +15,10 @@ Friendly Fleur is is dedicated to exploring the fascinating world of plants. Fro
   - [Contact](#contact)
   
   ## Motivation
-
+  Our motivation is fivefold: a deep love for plants, a commitment to community building, a celebration of the joy that comes with nurturing green life, a drive for inclusivity regardless of your gardening space, and a       mission to provide practical knowledge through gardening tips and plant profiles. We believe that everyone, whether tending to a sprawling garden or a few potted plants on a windowsill, can experience the fulfillment of    cultivating greenery.
 
   ## Usage:
-  
+
 
   ## Visuals:
  
@@ -39,6 +39,9 @@ Friendly Fleur is is dedicated to exploring the fascinating world of plants. Fro
 
   ## Github: 
   https://github.com/nehaps29 | https://github.com/coterone | https://github.com/LMErrico | https://github.com/crissyg923
+
+  
+  
 
   
   
