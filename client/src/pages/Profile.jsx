@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import PostForm from '../components/PostForm';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import { DELETE_POST, UPDATE_POST1 } from '../utils/mutations'; 
 import Auth from '../utils/auth';
+import '../components/profile/profile.css'
+import { Card, CardHeader, CardBody, Heading, Divider, Box, Input, Textarea, Code } from '@chakra-ui/react'
+import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
 
-const Profile = () => {
-
+const Profile = (quotedata) => {
   const { username: userParam } = useParams();
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
@@ -42,6 +44,23 @@ const Profile = () => {
     setIsEditing(false);
     setEditPost({ id: null, title: '', body: '' });
   };
+ 
+  const getRandomQuote= (arr) => arr[Math.floor(Math.random() * arr.length)];
+  const [randomQuote, setRandomQuote] = useState('');
+
+  useEffect(() => {
+    // Check if data is not empty before calling getRandomQuote
+
+    if (quotedata.quotedata && quotedata.quotedata.length > 0) {
+      const quote = getRandomQuote(quotedata.quotedata);
+      setRandomQuote(quote);
+      
+    }
+    else {
+      console.log('Quotedata is empty or not an array');
+    }
+  }, [quotedata]);
+ 
   const handleUpdatePost = async () => {
     try {
       const { id, title, body } = editPost;
@@ -77,10 +96,73 @@ const Profile = () => {
 
   return (
     <div>
-      <div className="flex-row justify-center mb-3">
-        <h2 className="col-12 col-md-10 bg-primary text-light p-3 mb-5">
-           {user.username} - Your Posts
+      <div className="flex-row justify-center mb-3 col-12">
+        <h2 className="col-12 col-md-10 bg-primary text-light p-3 mb-5 text-center profiletext">
+           {user.username}'s Profile
         </h2>
+      <div className="col-12 text-center" >
+        <Heading>Plant Fun Fact</Heading>
+      </div>
+      <div className="col-12 text-center pb-5" >
+         
+        <Code>{randomQuote}</Code>
+        </div>  
+        <Divider orientation='horizontal' />
+        <div className="text-center col-12 pt-3">
+        <Heading>My Posts</Heading>
+        </div>
+        <div className="col-12 col-md-10 mb-5 ">
+          {posts.map((post) => (
+            
+            <div key={post._id}>
+              <Box border='1px' borderColor='gray.200'>
+              <Card>
+              {isEditing && editPost.id === post._id ? (
+                <div>
+                  <Card>
+                  <Input
+                  
+                    type="text"
+                    value={editPost.title}
+                    onChange={(e) => setEditPost({ ...editPost, title: e.target.value })}
+                  />
+                
+                  
+                  <Textarea
+                    value={editPost.body}
+                    onChange={(e) => setEditPost({ ...editPost, body: e.target.value })}
+                  />
+                  
+                  <button className="update-button" onClick={handleUpdatePost}>Update</button>
+                  <button className="cancel-button"onClick={handleCancelEdit}>Cancel</button>
+                  </Card>
+                </div>
+              ) : (
+                <div>
+                  <CardHeader><Heading size='md'>{post.postTitle}</Heading></CardHeader>
+                  
+                  <CardBody>{post.postBody}</CardBody>
+                  <hr />
+                </div>
+              )}
+              <button
+                className="edit-button"
+                onClick={() => handleEditPost(post._id, post.postTitle, post.postBody)}
+              >
+                Edit <EditIcon />
+              </button>
+              <button
+                className="delete-button"
+                onClick={() => handleDeletePost(post._id)}
+              >
+                Delete <DeleteIcon />
+              </button>
+
+              </Card>
+              </Box>
+            </div>
+          ))}
+        </div>
         {!userParam && (
           <div
             className="col-12 col-md-10 mb-3 p-3"
@@ -89,53 +171,11 @@ const Profile = () => {
             <PostForm />
           </div>
         )}
-
-        <div className="col-12 col-md-10 mb-5">
-          {posts.map((post) => (
-            <div key={post._id}>
-              
-              <button
-                className="delete-button"
-                onClick={() => handleDeletePost(post._id)}
-              >
-                Delete
-              </button>
-              <button
-                className="edit-button"
-                onClick={() => handleEditPost(post._id, post.postTitle, post.postBody)}
-              >
-                Edit
-              </button>
-              {isEditing && editPost.id === post._id ? (
-                <div>
-                  <input
-                    type="text"
-                    value={editPost.title}
-                    onChange={(e) => setEditPost({ ...editPost, title: e.target.value })}
-                  />
-                  <textarea
-                    value={editPost.body}
-                    onChange={(e) => setEditPost({ ...editPost, body: e.target.value })}
-                  />
-                  <button className="update-button" onClick={handleUpdatePost}>Update</button>
-                  <button className="cancel-button"onClick={handleCancelEdit}>Cancel</button>
-                </div>
-              ) : (
-                <div>
-                  <h3>{post.postTitle}</h3>
-                  {/* <p>Author: {post.postAuthor}</p> */}
-                  <p>{post.postBody}</p>
-                  <hr />
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-
       </div>
 
     </div>
   );
+  
 };
 
 export default Profile;

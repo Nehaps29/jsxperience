@@ -9,6 +9,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import ErrorPage from './pages/ErrorPage';
+import quotedata from './utils/plantFacts.js';
 
 const router = createBrowserRouter([
   {
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
         element: <Profile />
       }, {
         path: '/me',
-        element: <Profile />
+        element: <Profile quotedata={quotedata}/>
       },
     ]
   },
