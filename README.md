@@ -23,16 +23,17 @@
 
   ## Usage:
   
-  Friendly Fleur is an online platform where users can generate, explore, and engage in discussions on blog posts centered around plants. It serves as a space for plant enthusiasts to exchange their expertise and perspectives with a wider audience.
-
+  Friendly Fleur is is dedicated to exploring the fascinating world of plants. From practical gardening tips to in-depth plant profiles, our goal is to share valuable information and foster a sense of community among plant lovers. We believe that everyone can experience the joy of nurturing and cultivating greenery, whether you have a sprawling garden or a few potted plants on your windowsill.
 
   ## Contribution Details: 
-    
+  We welcome contributions from the community! Whether you're a seasoned plant cultivator or a novice plant parent, your insights and experiences are valuable. 
 
   ## Licenses: 
   MIT
   ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)    
   https://opensource.org/licenses/MIT 
+
+  This project is licensed under the MIT License. Feel free to fork, modify, and share the content, but please credit the Friendly Fleur Blog and its contributors.
 
   
   ## Contact: 
