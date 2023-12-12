@@ -36,6 +36,7 @@ const typeDefs = `
   type Query {
     posts: [Post]
     me: User
+    post(postId: ID!): Post
   }
 
   type Mutation {
@@ -44,6 +45,7 @@ const typeDefs = `
     addPost(postTitle: String!, postBody: String!): Post
     updatePost(postId: ID!, postTitle: String!, postBody: String!): Post
     removePost(postId: ID!): Post
+    addComment(postId: ID!, commentText: String!): Post
   }
 `;
 

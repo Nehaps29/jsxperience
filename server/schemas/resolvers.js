@@ -7,6 +7,10 @@ const resolvers = {
     posts: async () => {
       return await Post.find({});
     },
+
+    post: async (parent, { postId }) => {
+      return Post.findOne({ _id: postId });
+    },
    
     me: async (parent, args, context) => {
       if (context.user) {
@@ -90,7 +94,25 @@ const resolvers = {
         throw new Error
       }
       return post;
-    }
+    },
+
+    addComment: async (parent, { postId, commentText }, context) => {
+      if (context.user) {
+        return Post.findOneAndUpdate(
+          { _id: postId },
+          {
+            $addToSet: {
+              comments: { commentText, commentAuthor: context.user.username },
+            },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
+      throw AuthenticationError;
+    },
      
   },
   

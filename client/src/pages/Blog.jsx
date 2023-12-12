@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_POST } from '../utils/queries';
+import { QUERY_SINGLE_POST } from '../utils/queries';
+import CommentForm from '../components/CommentForm'; 
+import PostCard from '../components/PostCard';
 
 const Blog = () => {
-  
+  const [showCommentForm, setShowCommentForm] = useState(false);
+  // const [selectedPostId, setSelectedPostId] = useState(null);
+ 
   const { loading, error, data } = useQuery(QUERY_POST);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
   
   const posts = data.posts || [];
   console.log(data);
+
+  
 
   return (
     <div>
@@ -24,14 +31,11 @@ const Blog = () => {
       <br />
       <div>
       {posts.map((post) => (
-        <div key={post._id} className="card mb-3">
-          <h3 className="card-header bg-primary text-light p-2 m-0">{post.postTitle}</h3>
-          <p className="text-black"> {post.postBody}</p>
-          <p className="card-body bg-light p-2">Author: {post.postAuthor}</p>
-          <hr />
-        </div>
+        <PostCard post={post} />
       ))}
       </div>
+       
+
     </div>
   );
 };
