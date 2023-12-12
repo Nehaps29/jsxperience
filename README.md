@@ -1,29 +1,27 @@
 # Friendly Fleur
 
 ## Description
+Friendly Fleur is is dedicated to exploring the fascinating world of plants. From practical gardening tips to in-depth plant profiles, our goal is to share valuable information and foster a sense of community among plant lovers. We believe that everyone can experience the joy of nurturing and cultivating greenery, whether you have a sprawling garden or a few potted plants on your windowsill.
+  
+## Deployment link: 
+  https://jsxperience.onrender.com/
 
-
-  ## Github Repo link: 
-  https://github.com/Nehaps29/jsxperience
-
-
-  ## Table of Content
-
-  - [Installation](#installation)
+## Table of Content
+  - [Motivation](#motivation)
   - [Usage](#usage)
+  - [Visuals](#visuals)
   - [Contribution Details](#contribution-details)
-  - [Test Instructions](#test-instructions) 
   - [License](#licenses)
   - [Contact](#contact)
   
-  
-
-  ## Installation: 
+  ## Motivation
 
 
   ## Usage:
   
-  Friendly Fleur is is dedicated to exploring the fascinating world of plants. From practical gardening tips to in-depth plant profiles, our goal is to share valuable information and foster a sense of community among plant lovers. We believe that everyone can experience the joy of nurturing and cultivating greenery, whether you have a sprawling garden or a few potted plants on your windowsill.
+
+  ## Visuals:
+ 
 
   ## Contribution Details: 
   We welcome contributions from the community! Whether you're a seasoned plant cultivator or a novice plant parent, your insights and experiences are valuable. 
