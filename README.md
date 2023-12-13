@@ -1,6 +1,6 @@
 # Friendly Fleur
 
-My motivation behind creating this app was to provide platform for plant lovers to disccusion about plants. It uses latest technologies like React and MOngo and grapghql. It also provides authentication via JWT.
+My motivation behind creating this app was to provide platform for plant lovers. Friendly Fleur is a dynamic and interactive platform that brings together green thumbs from all around the globe to share their passion for greenery. With state-of-the-art tech like React and Mongo, graphql and JWT authentication providing a secure environment, Friendly Fleur is a one-stop for all things botanical.
 
 ## Description
 
@@ -12,6 +12,9 @@ My motivation behind creating this app was to provide platform for plant lovers 
 
   https://jsxperience.onrender.com/
 
+
+  ## App Image:
+  ![App image](homeapp.JPG)
 
   ## Table of Content
 
@@ -34,7 +37,7 @@ My motivation behind creating this app was to provide platform for plant lovers 
   Friendly Fleur is is dedicated to exploring the fascinating world of plants. From practical gardening tips to in-depth plant profiles, our goal is to share valuable information and foster a sense of community among plant lovers. We believe that everyone can experience the joy of nurturing and cultivating greenery, whether you have a sprawling garden or a few potted plants on your windowsill.
 
   ## Contribution Details: 
-  We welcome contributions from the community! Whether you're a seasoned plant cultivator or a novice plant parent, your insights and experiences are valuable. 
+  Neha Sabannavar, Crystal Green, Lina Errico, Eric Coteron, Rutger's TA, Class Activities  
 
   ## Licenses: 
   MIT
