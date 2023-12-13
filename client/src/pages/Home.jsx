@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Flex, Image, Text, Heading, Spacer } from "@chakra-ui/react";
 import Slider from 'react-slick';
-
+import Clementine from '../assets/Clementine.png'
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
@@ -9,7 +9,7 @@ const Home = () => {
   const plants = [
     {
       name: 'Clementine Red',
-      imageSrc: '../public/images/headerplant.jpeg',
+      image: Clementine,
       description: '"A unique series of Columbine, featuring fluffy double flowers that resemble a small Clematis bloom, held upfacing on stems, well above the lacy green foliage mound. This selection produces blooms in shades of rosy red with a yellow center. Flowers are attractive to hummingbirds. Great in containers. Removing spent flowers will increase the blooming time. Great in containers. Since Columbines are relatively short lived, allow some of the plants to go to seed and self sow, however, resulting seedlings may not resemble the mother plant. Leaf miners or sawfly may disfigure the leaves around flowering time. Simply trim off the ugly foliage and the plants will grow fresh leaves. A Fleuroselect Quality Award winner."',
       resource: 'www.perennials.com',
       cycle: 'Perennials',
