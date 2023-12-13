@@ -1,6 +1,6 @@
 import { useState } from "react";
 import CommentForm from "../CommentForm";
-import { Card, CardHeader, CardBody, Heading, Center, Stack, StackDivider, Box} from '@chakra-ui/react'
+import { Card, CardHeader, CardBody, Heading, Center, CardFooter, Stack, StackDivider, Box, Text} from '@chakra-ui/react'
 const PostCard = ({post}) => {
     const [showCommentForm, setShowCommentForm] = useState(false);
 
