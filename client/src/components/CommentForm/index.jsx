@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import {
-  FormControl, Heading
-} from '@chakra-ui/react'
 
 import { ADD_COMMENT } from '../../utils/mutations';
 
@@ -45,6 +42,7 @@ const CommentForm = ({ postId }) => {
 
   return (
     <div>
+      <h4>Comments/Feedback/Suggestions are welcome</h4>
 
       {Auth.loggedIn() ? (
         <>
@@ -56,7 +54,7 @@ const CommentForm = ({ postId }) => {
             Character Count: {characterCount}/280
             {error && <span className="ml-2">{error.message}</span>}
           </p>
-          <FormControl
+          <form
             className="flex-row justify-center justify-space-between-md align-center"
             onSubmit={handleFormSubmit}
           >
@@ -76,7 +74,7 @@ const CommentForm = ({ postId }) => {
                  Add Comment 
               </button>
             </div>
-          </FormControl>
+          </form>
         </>
       ) : (
         <p>
