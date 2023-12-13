@@ -1,12 +1,16 @@
 # Friendly Fleur
 
+My motivation behind creating this app was to provide platform for plant lovers to disccusion about plants. It uses latest technologies like React and MOngo and grapghql. It also provides authentication via JWT.
+
 ## Description
 
 
   ## Github Repo link: 
   https://github.com/Nehaps29/jsxperience
 
-  
+  ## Deployed Link:
+
+  https://jsxperience.onrender.com/
 
 
   ## Table of Content
@@ -21,7 +25,9 @@
   
 
   ## Installation: 
-
+  - npm i
+  - npm run seed
+  - npm run develop
 
   ## Usage:
   
